@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Head from "next/head";
 
-const inter = Inter({ subsets: ["latin"] });
+const myFont = localFont({ src: "../../fonts/ClashDisplay-Regular.ttf" });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <Head>
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=clash-display@200,500,600,700,1&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <body style={myFont.style}>{children}</body>
     </html>
   );
 }
