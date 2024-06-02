@@ -4,7 +4,22 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Head from "next/head";
 
-const myFont = localFont({ src: "../../fonts/ClashDisplay-Regular.ttf" });
+const ClashDisplayNormal = localFont({
+  src: [
+    {
+      path: "../../fonts/ClashDisplay-Regular.ttf",
+      weight: "400",
+    },
+    {
+      path: "../../fonts/ClashDisplay-Semibold.ttf",
+      weight: "600",
+    },
+    {
+      path: "../../fonts/ClashDisplay-Bold.ttf",
+      weight: "800",
+    },
+  ],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,13 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <link
-          href="https://api.fontshare.com/v2/css?f[]=clash-display@200,500,600,700,1&display=swap"
-          rel="stylesheet"
-        />
-      </Head>
-      <body style={myFont.style}>{children}</body>
+      <body style={ClashDisplayNormal.style}>{children}</body>
     </html>
   );
 }
